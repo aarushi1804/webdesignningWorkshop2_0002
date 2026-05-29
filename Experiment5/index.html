@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Experiment 5 - Employee Management</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>Employee Management System</h1>
+
+    <div class="container">
+      <h3>Enter Employee Details</h3>
+
+      <input type="text" id="name" placeholder="Employee Name" required/>
+      <input type="text" id="id" placeholder="Employee ID" required/>
+      <input type="number" id="salary" placeholder="Salary" required min="10000">
+      <input type="text" id="dept" placeholder="Department" required/>
+
+      <button onclick="addEmployee()">Add Employee</button>
+
+      <div class="buttons">
+        <button onclick="displayEmployees()">Display All Employees</button>
+        <button onclick="filterSalary()">
+          Employees with Salary > ₹50,000
+        </button>
+        <button onclick="totalSalary()">Total Salary</button>
+        <button onclick="averageSalary()">Average Salary</button>
+        <button onclick="countDepartment()">
+          Count Employees by Department
+        </button>
+      </div>
+
+      <div id="output"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+

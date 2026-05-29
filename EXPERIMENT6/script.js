@@ -1,45 +1,43 @@
-// Selecting elements
-let heading = document.getElementById("heading");
-let input = document.getElementById("inputText");
-let para = document.getElementById("para");
-// Buttons
-let changeTextBtn = document.getElementById("changeTextBtn");
-let colorBtn = document.getElementById("colorBtn");
-let fontBtn = document.getElementById("fontBtn");
-let toggleBtn = document.getElementById("toggleBtn");
-let resetBtn = document.getElementById("resetBtn");
-// 1. Change Heading Text (onclick)
-changeTextBtn.onclick = function() {
+
+const heading = document.getElementById("heading");
+const para = document.getElementById("para");
+const input = document.getElementById("inputText");
+
+const btnText = document.getElementById("btnText");
+const btnColor = document.getElementById("btnColor");
+const btnFont = document.getElementById("btnFont");
+const btnToggle = document.getElementById("btnToggle");
+const btnReset = document.getElementById("btnReset");
+
+const defaultHeading = heading.innerText;
+const defaultBg = "linear-gradient(to right, #dfe9f3, #ffffff)";
+const defaultFontSize = "18px";
+
+btnText.addEventListener("click", () => {
+  if (input.value.trim() !== "") {
     heading.innerText = input.value;
-};
-// 2. Change Background Color (addEventListener)
-colorBtn.addEventListener("click", function() {
-    document.body.style.backgroundColor = "lightblue";
+  }
 });
-// 3. Change Font Size (onmouseover)
-fontBtn.onmouseover = function() {
-    heading.style.fontSize = "40px";
-};
-// 4. Show/Hide Paragraph
-let isVisible = true;
-toggleBtn.addEventListener("click", function() {
-    if (isVisible) {
-        para.style.display = "none";
-        isVisible = false;
-    } else {
-        para.style.display = "block";
-        isVisible = true;
-    }
+
+btnColor.addEventListener("click", () => {
+  const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+  document.body.style.background = randomColor;
 });
-// 5. Input Change Event (onchange)
-input.onchange = function() {
-    console.log("Input changed to: " + input.value);
-};
-// 6. Reset Page
-resetBtn.addEventListener("click", function() {
-    heading.innerText = "Welcome to JavaScript DOM";
-    document.body.style.backgroundColor = "white";
-    heading.style.fontSize = "24px";
-    para.style.display = "block";
-    input.value = "";
+
+btnFont.addEventListener("click", () => {
+  let currentSize = window.getComputedStyle(para).fontSize;
+  para.style.fontSize = parseInt(currentSize) + 2 + "px";
 });
+
+btnToggle.addEventListener("click", () => {
+  para.style.display = para.style.display === "none" ? "block" : "none";
+});
+
+btnReset.addEventListener("click", () => {
+  heading.innerText = defaultHeading;
+  document.body.style.background = defaultBg;
+  para.style.fontSize = defaultFontSize;
+  para.style.display = "block";
+  input.value = "";
+});
+
